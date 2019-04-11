@@ -1,0 +1,62 @@
+schema {
+  query: Query
+  subscription: Subscription
+}
+
+type Query {
+  tweetCount(topics: [String!]!): [TopicInfo]!
+}
+
+type Subscription {
+  getTweets(topics: [String!]!): [Tweet]
+}
+
+type TopicInfo{
+    name: String!
+    count: Long!
+}
+
+type Tweet{
+    createdAt: String
+    id: ID!
+    topic: String!
+    text: String!
+    user: User!
+    geo: GeoInfo
+    retweetCount: Long
+    favoriteCount: Long
+    favorited: Boolean
+    retweeted: Boolean
+    possiblySensitive: Boolean
+    lang: String!
+}
+
+type User
+{
+    id: ID!
+    name: String!
+    screenName: String!
+    location: String
+    description: String
+    url: String
+    followersCount: Long
+    friendsCount: Long
+    listedCount: Long
+    createdAt: String
+    favouritesCount: Long
+    utcOffset: Int
+    timeZone: String
+    geoEnabled: Boolean
+    verified: Boolean
+    statusesCount: Long
+    lang: String
+}
+
+type GeoInfo{
+    place: String!
+}
+
+
+
+
+
